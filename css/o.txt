@@ -1,0 +1,120 @@
+<?php$query = mysqli_query($conn,$sql);
+						
+						$row = mysqli_num_rows($query);
+						echo $row;
+						// Here we have the total row count
+						$rows = $row[0];
+						echo $rows."<br>";
+						$totalquantity = 0;
+						
+						
+						
+						$subtotal = 0;
+						
+						$totalamount = 0;
+						
+						$vat1 = 0;
+						
+						$selectproducts = "SELECT * FROM tblorder,tblitem,tblusers WHERE tblorder.c_id = '$uid'  AND tblitem.itemid = tblorder.i_id ";
+						echo$selectproducts;
+						$query = mysqli_query($conn, $selectproducts);
+						$rows=mysqli_num_rows($query);
+						echo $rows;
+						$list = "";
+						$src = "uploads/";
+
+						/*if($rows == 0)
+						{
+							echo "<script>alert('No any Order Placed')</script>";
+							echo "<script>window.location.href='index-1.php';</script>";
+						}
+						
+						
+						
+							$delivery = 100;
+							$vat = 0.15;
+							
+							echo '<center>';
+							echo '<table align="center" border="1" cellspacing="3" cellpadding="1" width="75%">
+									<th align="center" bgcolor="e6e6e6">ITEM ID</th>
+									<th align="center" bgcolor="e6e6e6">USER NAME</th><th align="center" bgcolor="e6e6e6">PRODUCT</th>
+									<th align="center" bgcolor="e6e6e6">Image</th>
+									<th align="center" bgcolor="e6e6e6">QUANTITY</th><th align="center" bgcolor="e6e6e6">PRICE</th>
+									<th align="center" bgcolor="e6e6e6">AMOUNT</th>
+									
+									<th align="center" bgcolor="white">ADDED ON</th>
+									<th align="center"><font color="red">REMOVE ITEM</font></th>';
+									
+									
+							for($loop = 0; $loop < $rows; $loop++)
+							{
+								
+								while($row = mysqli_fetch_array($query, MYSQLI_ASSOC))
+								{
+									$jewelid = $row["i_id"];
+									$qty = $row["qty"];
+									$userid = $row["c_id"];						
+									$dateadd = $row['o_date'];
+									
+									$username=$row['username'];
+									
+
+									$dateadd = date($dateadd);
+
+									$name = $row["item_name"];
+									$path = $row["image"];
+									$category = $row["category"];
+									$price = $row["price"];
+									$desc = $row["description"];
+									$width="75px";
+									$height="75px";
+									
+									$amount = ($qty * $price);
+
+									$amount = round($amount);
+									if (round($amount*10) == $amount*10 && round($amount)!=$amount) $amount = "$amount"."0"; //to avoid prices like 17.5 - write 17.50 instead
+									{
+										if (round($amount) == $amount) 
+										{
+											$amount  = "$amount".".00";
+										}
+									}
+									
+									$totalquantity = $totalquantity + $qty;
+									$subtotal = $subtotal + $amount;
+									
+									if($subtotal == 0)
+									{
+										$vat1 = 0;
+									}
+									
+									else
+									{
+										$vat1 = round($vat * $subtotal);
+										
+										if($vat1 > 0)
+										{
+											$vat1 = $vat1;
+										}
+										
+										else
+										{
+											$vat1 =0;
+										}
+									}
+									
+									$totalamount = ($subtotal + $vat1 + $delivery);
+									
+									$list ='<tr align="center"><td>' . $jewelid . '</td><td>' . $username . '</td><td>' . $name . '</td>
+									<td> <div class="image"><a href="' . $src . $path . '"><img width="' . $width . '" height="' . $height . '" src="' . $src . $path . '" alt = "' . $prodname . '"></a></div></td><td>' . $qty . '</td>';
+									$list .= '<td>' . $price . '</td><td>' . $amount . '</td>';
+									
+									$list  .='<td>' . $dateadd . '</td>';
+									$list .='<td><form method="post" action="removeorder.php"><input type="hidden" size="4" name="txtjewelid" value="' . $jewelid .'" /><input type="submit" value="X" name="submit" /></form></td></tr>';
+
+									echo $list;	
+								}
+							}
+							echo "</table></center><br />";	
+						*/
+					?>

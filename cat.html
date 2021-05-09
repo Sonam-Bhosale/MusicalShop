@@ -1,0 +1,28 @@
+<?php
+	include 'config.php';
+?>
+<html>
+<body>
+	<br><br><br>
+	<center><font color="#660066" size="+3">Add Category</font></center>
+	<br><br>
+	<center><fieldset style="width:50%">
+	<form  name="testform" action="processcat.php" method="post" enctype="multipart/form-data" >
+		<table align="center">
+			<tr>
+			  <td><span class="style3">Category Name: </span></td>
+			  <td><label>
+				<input name="catname" type="text" id="t1">
+			  </label></td>
+			</tr>
+			<tr>
+				<td><span class="style3">Description:</span></td>
+				<td><textarea name="text" cols="35" rows="6"></textarea></td>
+			</tr>
+			<tr><td  colspan="2" align="center"><input name="sub" type="submit" value="Submit"><input name="clear" type="reset" value="Reset"></td></tr>
+		</table>
+	</form>
+	</fieldset></center>
+	</body>
+	</html>
+	

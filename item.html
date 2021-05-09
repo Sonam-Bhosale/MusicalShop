@@ -1,0 +1,69 @@
+<?php	include 'config.php';?>
+<html>
+<head>
+	
+</head>
+
+<body>
+	<br><br><br>
+	<center><font color="#660066" size="+3">Add Item</font></center>
+	<br><br>
+	<center><fieldset style="width:50%">
+	<form  method="post" action="processitem.php" enctype="multipart/form-data" >
+			<table align="center">
+				<tr>
+					<td><span class="style3">Registered Date: </span></td>
+				  <td><label><input name="date" type="date" id="date"></label></td>
+				</tr>
+				<tr>
+					<td width="111"><span class="style3">Category:</span></td>
+					<td width="400"><select name=cat>
+					<option value=''>Select One</option>
+					<?php
+						include 'config.php';
+						
+						$sql="SELECT * FROM tblcat";
+						$result=mysqli_query($conn,$sql);
+						if(mysqli_num_rows($result)){
+						while($row=mysqli_fetch_array($result))
+									{		$catid=$row['cat_id'];
+											$catname=$row['cat_name'];
+											
+									?><option value="<?php echo $catid;?>"><?php echo $catname;?></option>
+									<?php
+									}	
+								}
+				 
+				</select>
+				</td>
+				</tr>
+				<tr>
+				  <td><span class="style3">Item Name: </span></td>
+				  <td><label><input name="name" type="text" id="name"></label></td>
+				</tr>
+				<tr>
+					<td><span class="style3">Image:</span></td>
+					<td><input name="file" type="file"></td></tr>
+				<tr>
+				  <td><span class="style3">Item No: </span></td>
+				  <td><label><input name="t1" type="text" id="t1"></label></td>
+				</tr>
+				<tr>
+				  <td><span class="style3">Price:</span></td>
+				  <td><label><input name="t2" type="text" id="t2"></label></td>
+				</tr>
+				<tr>
+				  <td><span class="style3">Stock:</span></td>
+				  <td><label> <input name="t3" type="text" id="t3"></label></td>
+				</tr>
+				
+				<tr>
+					<td><span class="style3">Description:</span></td>
+					<td><textarea name="text" cols="35" rows="6"></textarea></td>
+				</tr>
+				<tr><td  colspan="2" align="center"><input name="sub" type="submit" value="Submit"><input name="clear" type="reset" value="Clear"></td></tr>
+			</table>
+	</form>
+	</fieldset></center>
+</body>
+</html>
